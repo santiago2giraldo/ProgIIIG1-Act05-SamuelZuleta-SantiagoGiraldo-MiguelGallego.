@@ -45,3 +45,26 @@ conyugue(marge, homero).
 conyugue(mona, abraham).
 
 conyugue(jacqueline, clancy).
+
+# Reglas Modificadas a Listas
+
+# Hij@s
+
+hijo(X, Y) :- es_padre_de(Y, Lista), member(X, Lista), hombres(Hombres), member(X, Hombres).
+
+hijo(X, Y) :- es_madre_de(Y, Lista), member(X, Lista), hombres(Hombres), member(X, Hombres).
+
+hija(X, Y) :- es_padre_de(Y, Lista), member(X, Lista), mujeres(Mujeres), member(X, Mujeres).
+
+hija(X, Y) :- es_madre_de(Y, Lista), member(X, Lista), mujeres(Mujeres), member(X, Mujeres).
+
+# Herman@s
+
+hermano(X, Y) :- es_padre_de(_, Lista), member(X, Lista), member(Y, Lista), X \= Y, hombres(Hombres), member(X, Hombres).
+
+hermano(X, Y) :- es_madre_de(_, Lista), member(X, Lista), member(Y, Lista), X \= Y, hombres(Hombres), member(X, Hombres).
+
+hermana(X, Y) :- es_padre_de(_, Lista), member(X, Lista), member(Y, Lista), X \= Y, mujeres(Mujeres), member(X, Mujeres).
+
+hermana(X, Y) :- es_madre_de(_, Lista), member(X, Lista), member(Y, Lista), X \= Y, mujeres(Mujeres), member(X, Mujeres).
+
