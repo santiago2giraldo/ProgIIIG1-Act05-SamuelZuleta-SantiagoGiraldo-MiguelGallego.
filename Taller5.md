@@ -68,3 +68,40 @@ hermana(X, Y) :- es_padre_de(_, Lista), member(X, Lista), member(Y, Lista), X \=
 
 hermana(X, Y) :- es_madre_de(_, Lista), member(X, Lista), member(Y, Lista), X \= Y, mujeres(Mujeres), member(X, Mujeres).
 
+# Ti@s
+
+(Miguel)
+
+# Primo
+
+(Miguel)
+
+# Sobrin@s
+
+sobrino(X, Y) :- (es_padre_de(Z, ListaHijos); es_madre_de(Z, ListaHijos)), member(X, ListaHijos), (hermano(Y, Z); hermana(Y, Z)), hombres(Hombres), member(X, Hombres).
+
+sobrina(X, Y) :- (es_padre_de(Z, ListaHijos); es_madre_de(Z, ListaHijos)), member(X, ListaHijos), (hermano(Y, Z); hermana(Y, Z)), mujeres(Mujeres), member(X, Mujeres).
+
+# Abuel@s
+
+abuelo(X, Y) :- hombres(Hombres), member(X, Hombres), (es_padre_de(X, ListaHijosZ); es_madre_de(X, ListaHijosZ)), member(Z, ListaHijosZ), (es_padre_de(Z, ListaHijosY); es_madre_de(Z, ListaHijosY)), 
+member(Y, ListaHijosY).
+
+abuela(X, Y) :- mujeres(Mujeres), member(X, Mujeres), (es_padre_de(X, ListaHijosZ); es_madre_de(X, ListaHijosZ)), member(Z, ListaHijosZ), (es_padre_de(Z, ListaHijosY); es_madre_de(Z, ListaHijosY)),
+member(Y, ListaHijosY).
+
+# Nietos
+
+nieto(X, Y) :- hombres(Hombres), member(X, Hombres), (es_padre_de(Y, ListaHijosZ); es_madre_de(Y, ListaHijosZ)), member(Z, ListaHijosZ), (es_padre_de(Z, ListaHijosX); es_madre_de(Z, ListaHijosX)), 
+member(X, ListaHijosX).
+
+nieta(X, Y) :- mujeres(Mujeres), member(X, Mujeres), (es_padre_de(Y, ListaHijosZ); es_madre_de(Y, ListaHijosZ)), member(Z, ListaHijosZ), (es_padre_de(Z, ListaHijosX); es_madre_de(Z, ListaHijosX)), 
+member(X, ListaHijosX).
+
+
+
+
+
+
+
+
